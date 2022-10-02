@@ -1,0 +1,30 @@
+
+     int dp[100]={};
+     int rec(int ind,int n,string s)
+     {
+         
+         
+         if(ind==n)
+         {
+             
+             return 1;
+         }
+         if(dp[ind]!=0)return dp[ind];
+         int ans=0;
+        
+        if(ind+1<n && (s[ind]=='1' || s[ind]=='2' && s[ind+1]-'0'<=6 ))
+        {
+          ans+=  rec(ind+2,n,s);
+        }
+     if(s[ind]!='0') ans+=rec(ind+1,n,s);
+         return dp[ind]=ans;
+     
+     
+    
+}
+    int numDecodings(string s) {
+        int n=s.size();
+      
+       int a= rec(0,n,s);
+        return a;
+    }
